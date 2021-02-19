@@ -3,7 +3,17 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
+
 const app = express();
+
+var fs = require('fs');
+var dir = './uploads';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
+
 app.use(cors());
 
 // parse application/x-www-form-urlencoded
