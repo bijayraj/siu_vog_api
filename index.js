@@ -3,11 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
-
 const app = express();
 
 var fs = require('fs');
-var dir = './uploads';
+var dir = '/tmp/uploads';
 
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
@@ -30,7 +29,7 @@ app.listen(port, () => console.log('Server ready'));
 
 const storage = multer.diskStorage(
    {
-       destination: './uploads/',
+       destination: '/tmp/uploads/',
        filename: function ( req, file, cb ) {
            //req.body is empty...
            cb( null, 'audio'+ '-' + Date.now()+".wav");
